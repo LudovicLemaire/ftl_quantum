@@ -1,9 +1,11 @@
 FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y python3.9 \
-    python3-pip
-            
-RUN pip3 install JPype1 jupyter pandas numpy seaborn scipy matplotlib pyNetLogo SALib pylatexenc qiskit qiskit[visualization] qiskit-ibm-provider
+    python3-pip \
+    git
+             
+RUN pip3 install JPype1 jupyter pandas numpy seaborn matplotlib qiskit qiskit[visualization] qiskit-ibm-provider qiskit-ibm-runtime
+RUN pip3 install git+https://github.com/qiskit-community/qiskit-textbook.git#subdirectory=qiskit-textbook-src
     
 RUN useradd -ms /bin/bash jupyter
 USER jupyter
